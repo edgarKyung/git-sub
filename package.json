@@ -1,0 +1,86 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "git-sub",
+        "scope": null,
+        "escapedName": "git-sub",
+        "name": "git-sub",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "D:\\TGOS\\Seeun\\solution\\tgos_server_sol_seeun"
+    ]
+  ],
+  "_from": "git-sub",
+  "_id": "git-sub@2.0.2",
+  "_inBundle": false,
+  "_inCache": true,
+  "_integrity": "sha1-YabGV/Zz5TF3k7PkpT7VUfRlxCw=",
+  "_location": "/git-sub",
+  "_nodeVersion": "4.4.7",
+  "_npmOperationalInternal": {
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/git-sub-1.0.9.tgz_1474423420544_0.703554515261203"
+  },
+  "_npmUser": {
+    "name": "nhyun.kyung",
+    "email": "edgar.kyung@gmail.com"
+  },
+  "_npmVersion": "2.15.8",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "git-sub",
+    "name": "git-sub",
+    "escapedName": "git-sub",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/git-sub/-/git-sub-2.0.2.tgz",
+  "_shasum": "61a6c657f673e5317793b3e4a53ed551f465c42c",
+  "_shrinkwrap": null,
+  "_spec": "git-sub",
+  "_where": "C:\\Workspace\\RodiOn",
+  "author": {
+    "name": "nhyun.kyung"
+  },
+  "bin": {
+    "git-sub": "./main"
+  },
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
+  "description": "README",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "ceec7dff18dabc7accc33c2f887c6e76dbfcc060",
+    "tarball": "https://registry.npmjs.org/git-sub/-/git-sub-2.0.0.tgz"
+  },
+  "engines": {
+    "node": ">= 0.10"
+  },
+  "license": "ISC",
+  "main": "./main",
+  "maintainers": [
+    {
+      "name": "nhyun.kyung",
+      "email": "edgar.kyung@gmail.com"
+    }
+  ],
+  "name": "git-sub",
+  "optionalDependencies": {},
+  "preferGlobal": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "2.0.2"
+}
