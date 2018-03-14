@@ -1,0 +1,32 @@
+[submodule "servers/mqtt-bkr"]
+	path = servers/mqtt-bkr
+	url = http://ctf1.stw.net/gerrit/tgos_server_p_mqtt-bkr
+	branch = develop
+[submodule "servers/seeun-web-server"]
+	path = servers/seeun-web-server
+	url = http://ctf1.stw.net/gerrit/tgos_server_p_seeun-web-server
+	branch = develop
+[submodule "servers/log-simulate-svc"]
+	path = servers/log-simulate-svc
+	url = http://ctf1.stw.net/gerrit/tgos_server_p_log-simulate-svc
+	branch = develop
+[submodule "servers/log-collect-svc"]
+	path = servers/log-collect-svc
+	url = http://ctf1.stw.net/gerrit/tgos_server_p_log-collect-svc
+	branch = develop
+[submodule "servers/mongodb"]
+	path = servers/mongodb
+	url = http://ctf1.stw.net/gerrit/tgos_server_p_mongodb
+	branch = develop
+[submodule "servers/log-data-svc"]
+	path = servers/log-data-svc
+	url = http://ctf1.stw.net/gerrit/tgos_server_p_log-data-svc
+	branch = develop
+[submodule "servers/log-analysis-svc"]
+	path = servers/log-analysis-svc
+	url = http://ctf1.stw.net/gerrit/tgos_server_p_log-analysis-svc
+	branch = develop
+[submodule "servers/log-community-svc"]
+	path = servers/log-community-svc
+	url = http://ctf1.stw.net/gerrit/tgos_server_p_log-community-svc
+	branch = develop

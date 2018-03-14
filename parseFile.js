@@ -4,41 +4,45 @@
     module: false
 */
 
-module.exports = function (filePath) {
-    var fs = require('fs');
-    var array = fs.readFileSync(filePath).toString().split("\n");
+var fs = require('fs');
 
-    var moduleList = [];
-    var module = {};
-
-    var inputModule = function () {
+module.exports = (function() {
+    var __parseModule = function(moduleList, modules) {
         var inputData = {};
 
-        if (module.path && module.url) {
-            for (var i in module)
-                if (module[i])
-                    inputData[i] = module[i];
-
+        if (modules.path && modules.url) {
+            for (var key in modules)
+                if (modules[key])
+                    inputData[key] = modules[key];
 
             moduleList.push(inputData);
-            module = {};
         }
     };
 
-    for (var i in array) {
-        var endCheck = array[i].indexOf('[submodule');
+    var gitmodule = function(filePath) {
+        var array = fs.readFileSync(filePath).toString().split("\n");
+        var moduleList = [];
+        var modules = {};
 
-        if (endCheck !== -1) {
-            inputModule();
+        for (var i in array) {
+            var endCheck = array[i].indexOf('[submodule');
+            if (endCheck !== -1) {
+                __parseModule(moduleList, modules);
+                modules = {};
 
-        } else {
-            var splitData = array[i].split(/(?:=|\t| |\r)+/).filter(Boolean);
-
-            module[splitData[0]] = splitData[1];
+            } else {
+                var splitData = array[i].split(/(?:=|\t| |\r)+/).filter(Boolean);
+                modules[splitData[0]] = splitData[1];
+            }
         }
-    }
 
-    inputModule();
+        __parseModule(moduleList, modules);
 
-    return moduleList;
-};
+        return moduleList;
+    };
+
+    return {
+        "gitmodule": gitmodule
+    };
+
+})();

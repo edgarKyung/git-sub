@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
-var subManager = require('./subManager.js')();
-var version = require('./package.json').version;
+var commandGit = require("./command_git");
+var commandNpm = require("./command_npm");
+var version = require("./package.json").version;
 
 var usage = function () {
     console.log(
@@ -19,32 +20,32 @@ var usage = function () {
 
 
 switch (process.argv[2]) {
-    case 'status':
-    case 'checkout':
-    case 'pull':
-    case 'update':
+    case "status":
+    case "checkout":
+    case "pull":
+    case "update":
         if (process.argv.length === 3) {
-            subManager[process.argv[2]]();
+            commandGit[process.argv[2]]();
         } else {
             usage();
         }
         break;
 
-    case 'clear':
-    case 'link':
-        if (process.argv.length === 4 && process.argv[3] === '-f') {
-            subManager[process.argv[2]]();
+    case "clean":
+    case "link":
+        if (process.argv.length === 4 && process.argv[3] === "-f") {
+            commandGit[process.argv[2]]();
         } else {
             usage();
         }
         break;
 
-    case 'npm':
+    case "npm":
         if (process.argv.length === 4) {
             switch (process.argv[3]) {
                 case "install" :
                 case "list":
-                    subManager[process.argv[2] + "_" + process.argv[3]]();
+                    commandNpm[process.argv[3]]();
                     break;
                 default:
                     usage();

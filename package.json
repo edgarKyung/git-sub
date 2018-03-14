@@ -1,6 +1,6 @@
 {
   "name": "git-sub",
-  "version": "2.0.4",
+  "version": "3.0.0",
   "description": "Tool for git's submodule command",
   "preferGlobal": true,
   "bin": {
