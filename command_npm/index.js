@@ -8,6 +8,8 @@ var fs = require("fs");
 var path = require("path");
 var spawn = require("child_process").spawn;
 
+var oc = require("object-controller");
+
 var parseFile = require("../parseFile.js");
 var execCmd = require("../execCmd");
 
@@ -59,24 +61,34 @@ module.exports = (function() {
         });
     };
 
+    var __printNpmList = function(npmList) {
+        console.log("\n============= npm dependencies module list =============");
+        var message = "{\n";
+        var keys = Object.keys(npmList);
+        keys.sort();
+        for (var i = 0; i < keys.length; i++) {
+            message += "  \"" + keys[i] + "\": [";
+            npmList[keys[i]].sort();
+            for (var j=0 ; j< npmList[keys[i]].length ; j++){
+                message += "\"" + npmList[keys[i]][j] + "\", "
+            }
+            message = message.substring(0, message.length - 2);
+            message += "],\n";
+        }
+        message = message.substring(0, message.length - 2);
+        message += "\n}";
+        console.log(message);
+        console.log("========================= end ==========================\n");
+    };
 
     var __list = function(moduleList, npmList) {
         if (moduleList.length > 0) {
             var targetModule = moduleList.shift();
             if (targetModule.path) {
-                fs.stat(path.join(targetModule.path, "package.json"), function(err, stat) {
+                var targetPath = path.join(targetModule.path, "package.json");
+                fs.stat(targetPath, function(err, stat) {
                     if (err === null) {
-                        try {
-                            var package = JSON.parse(fs.readFileSync(path.join(targetModule.path, "package.json")));
-                            if(package && package.dependencies) {
-                                var keys = Object.keys(package.dependencies);
-                                for (var i = 0; i < keys.length; i++) {
-                                    npmList[keys[i]] = package.dependencies[keys[i]];
-                                }
-                            }
-                        } catch (ex) {
-                            console.error(ex, path.join(targetModule.path, "package.json"));
-                        }
+                        oc.appendValueInSameKey(npmList, parseFile.packagejson(targetPath));
                     }
                     var cmd = "cd " + targetModule.path;
                     execCmd(false, cmd, function() {
@@ -89,13 +101,7 @@ module.exports = (function() {
                 __list(moduleList, npmList);
             }
         } else {
-            console.log("=========== npm dependencies module list ===========\n");
-            var keys = Object.keys(npmList);
-            keys.sort();
-            for (var i = 0; i < keys.length; i++) {
-                console.log("\"" + keys[i] + "\": \"" + npmList[keys[i]] + "\",");
-            }
-            console.log("\n======================= end ========================");
+            __printNpmList(npmList);
         }
     };
 

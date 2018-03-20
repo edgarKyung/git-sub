@@ -1,6 +1,6 @@
 {
   "name": "git-sub",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Tool for git's submodule command",
   "preferGlobal": true,
   "bin": {
@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/edgarKyung/git-sub/issues"
   },
-  "homepage": "https://github.com/edgarKyung/git-sub#readme"
+  "homepage": "https://github.com/edgarKyung/git-sub#readme",
+  "dependencies": {
+    "object-controller": "^1.1.0"
+  }
 }
